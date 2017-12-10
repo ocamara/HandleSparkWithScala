@@ -1,0 +1,35 @@
+create table customers(ID int, NAME string, AGE string, ADDRESS string, SALARY string)
+row format delimited
+fields terminated by ','
+lines terminated by '\n'
+stored as textFile
+
+load data local inpath '/home/ousminho/Téléchargements/data1' overwrite into table customers;
+
+create table orders(oid int, data string,customer_id int, amount string)
+row format delimited
+fields terminated by ','
+lines terminated by '\n'
+stored as textFile
+
+load data local inpath '/home/ousminho/Téléchargements/data2' overwrite into table orders;
+
+SELECT c.ID, c.NAME, o.AMOUNT,o.date_order
+FROM CUSTOMERS c
+LEFT OUTER JOIN ORDERS o
+ON (c.ID = o.CUSTOMER_ID);
+
+SELECT c.ID, c.NAME, o.AMOUNT,o.date_order
+FROM CUSTOMERS c
+RIGHT OUTER JOIN ORDERS o
+ON (c.ID = o.CUSTOMER_ID);
+
+SELECT c.ID, c.NAME, o.AMOUNT,o.date_order
+FROM CUSTOMERS c
+FULL OUTER JOIN ORDERS o
+ON (c.ID = o.CUSTOMER_ID);
+
+SELECT c.ID, c.NAME, o.AMOUNT,o.date_order
+FROM orders o
+RIGHT OUTER JOIN customers c
+ON (c.ID = o.CUSTOMER_ID);
