@@ -7,7 +7,7 @@ object ParseJson {
 
   def example()=
   {
-    val value="""{"nom":"camara","prenom":"ousmane","ecole":["koffi","dauphine"]}"""
+    val value="""{"nom":"xxxxxxxxxx","prenom":"yyyyyyyyyy","ecole":["aaaa","bbbbb"]}"""
     val result=parse(value)
     result.foreach(println)
 
